@@ -9,5 +9,4 @@ trigger:
 steps:
 - script: |
     docker build .
-  workingDirectory: 'my-budgeting-app'
   displayName: 'Get dependencies, then build'
