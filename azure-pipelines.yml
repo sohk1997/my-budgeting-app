@@ -3,10 +3,15 @@
 # Add steps that test, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/go
 
+variables:
+  GIT_COMMIT: $(Build.SourceVersion)
+  GIT_BRANCH: $(Build.SourceBranchName)
+
 trigger:
 - master
 
 steps:
 - script: |
-    docker build .
+    docker build . -t sohk1997.azurecr.io/my-budgeting-app:$(GIT_COMMIT)
+    docker push sohk1997.azurecr.io/my-budgeting-app:$(GIT_COMMIT)
   displayName: 'Get dependencies, then build'

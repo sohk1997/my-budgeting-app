@@ -1,4 +1,4 @@
-FROM go:1.16
+FROM sohk1997.azurecr.io/go:1.16-alpine
 
 RUN cd server && \
     go mod tidy && \
