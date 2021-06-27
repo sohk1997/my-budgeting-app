@@ -2,7 +2,7 @@
 variables:
   GIT_COMMIT: $(Build.SourceVersion)
   GIT_BRANCH: $(Build.SourceBranchName)
-  serviceConnection: sohk1997
+  dockerHub: sohk1997.azurecr.io
   imageName: my-budgeting-app:$(GIT_COMMIT)
 
 trigger:
@@ -18,7 +18,7 @@ steps:
   - task: Docker@2
     displayName: Push image
     inputs:
-      containerRegistry: $(serviceConnection)
+      containerRegistry: $(dockerHub)
       repository: $(imageName)
       command: push
       tags: |
