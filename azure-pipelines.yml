@@ -1,6 +1,6 @@
 
 variables:
-  $imageTag: $(Build.SourceVersion)
+  imageTag: $(Build.SourceVersion)
   dockerHub: sohk1997.azurecr.io
   imageName: my-budgeting-app
 
