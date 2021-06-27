@@ -20,6 +20,9 @@ steps:
       repository: $(imageName)
       command: build
       Dockerfile: Dockerfile
+      tags: |
+        latest
+        $(GIT_COMMIT)
   - task: Docker@2
     displayName: Push image
     inputs:
