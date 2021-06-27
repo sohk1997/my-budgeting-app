@@ -49,7 +49,8 @@ stages:
       inputs:
         connectionType: 'Kubernetes Service Connection'
         kubernetesServiceEndpoint: 'my-budgeting-app-nonprod'
-        command: 'create'
+        command: 'apply'
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
         outputFormat: 'yaml'
+        arguments: -f main.yaml
