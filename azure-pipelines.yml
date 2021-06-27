@@ -43,7 +43,7 @@ stages:
   - job: Deploy
     displayName: deploy
     pool:
-      vmImage: ubuntu-16.04
+      vmImage: ubuntu-latest
     steps:
     - task: Bash@3
       displayName: Envsubst
