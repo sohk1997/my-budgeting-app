@@ -44,7 +44,6 @@ stages:
   - job: Deploy
     displayName: deploy
     steps:
-    - bash: ls -a
     - bash: envsubst < main.yml > main.yml
     - task: Kubernetes@1
       inputs:
@@ -54,4 +53,4 @@ stages:
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
         outputFormat: 'yaml'
-        arguments: -f $(Build.Repository.LocalPath)\main.yaml
+        arguments: -f $(Build.Repository.LocalPath)main.yaml
