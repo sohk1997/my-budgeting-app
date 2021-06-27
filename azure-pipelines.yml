@@ -45,5 +45,5 @@ stages:
   - job: Deploy
     displayName: deploy
     steps:
-    - script:
-      - echo "Hello world"
+    - script: |
+      echo "Hello world"
