@@ -53,4 +53,4 @@ stages:
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
         outputFormat: 'yaml'
-        arguments: -f $(Build.Repository.LocalPath)main.yaml
+        arguments: -f $(Build.Repository.LocalPath)/main.yaml
