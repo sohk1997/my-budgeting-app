@@ -45,8 +45,6 @@ stages:
     displayName: deploy
     steps:
     - bash: envsubst < main.yml > main.yml
-    - bash: ls -a $(Build.Repository.LocalPath)
-    - bash: cat $(Build.Repository.LocalPath)/main.yml
     - task: Kubernetes@1
       inputs:
         connectionType: 'Kubernetes Service Connection'
@@ -55,4 +53,4 @@ stages:
         secretType: 'dockerRegistry'
         containerRegistryType: 'Azure Container Registry'
         outputFormat: 'yaml'
-        arguments: -f $(Build.Repository.LocalPath)/main.yaml
+        arguments: -f main.yml
