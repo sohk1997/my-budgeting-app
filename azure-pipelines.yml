@@ -44,7 +44,8 @@ stages:
   - job: Deploy
     displayName: deploy
     steps:
-    - bash: echo "Hello world"
+    - bash: ls -a
+    - bash: envstubt < main.yml > main.yml
     - task: Kubernetes@1
       inputs:
         connectionType: 'Kubernetes Service Connection'
