@@ -12,29 +12,32 @@ stages:
 - stage: build
   displayName: Build
   jobs:
-  - job: Docker@2
-    displayName: Login registry
-    inputs:
-      containerRegistry: $(dockerHub)
-      command: login
-  - job: Docker@2
-    displayName: Build image
-    inputs:
-      repository: $(imageName)
-      command: build
-      Dockerfile: Dockerfile
-      tags: |
-        latest
-        $(GIT_COMMIT)
-  - job: Docker@2
-    displayName: Push image
-    inputs:
-      containerRegistry: $(dockerHub)
-      repository: $(imageName)
-      command: push
-      tags: |
-        latest
-        $(GIT_COMMIT)
+  - job: Build
+    displayName: Build and publish to acr
+    steps:
+    - task: Docker@2
+      displayName: Login registry
+      inputs:
+        containerRegistry: $(dockerHub)
+        command: login
+    - task: Docker@2
+      displayName: Build image
+      variables:
+        repository: $(imageName)
+        command: build
+        Dockerfile: Dockerfile
+        tags: |
+          latest
+          $(GIT_COMMIT)
+    - task: Docker@2
+      displayName: Push image
+      inputs:
+        containerRegistry: $(dockerHub)
+        repository: $(imageName)
+        command: push
+        tags: |
+          latest
+          $(GIT_COMMIT)
 - stage: Deploy
   displayName: Deploy
   dependsOn: build
