@@ -45,3 +45,11 @@ stages:
     displayName: deploy
     steps:
     - bash: echo "Hello world"
+    - task: Kubernetes@1
+      inputs:
+        connectionType: 'Kubernetes Service Connection'
+        kubernetesServiceEndpoint: 'my-budgeting-app-nonprod'
+        command: 'create'
+        secretType: 'dockerRegistry'
+        containerRegistryType: 'Azure Container Registry'
+        outputFormat: 'yaml'
