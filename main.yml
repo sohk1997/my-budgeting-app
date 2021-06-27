@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $imageName
+spec:
+  replicas: 1
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 0
+  template:
+    metadata:
+      name: $imageName
+      labels:
+        name: $imageName
+    spec:
+      containers:
+        - name: $imageName
+          image: {$dockerHub}/{$imageName}:$imageTag
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100MB
+  
