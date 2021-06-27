@@ -45,7 +45,7 @@ stages:
     displayName: deploy
     steps:
     - bash: ls -a
-    - bash: envstubt < main.yml > main.yml
+    - bash: envsubst < main.yml > main.yml
     - task: Kubernetes@1
       inputs:
         connectionType: 'Kubernetes Service Connection'
