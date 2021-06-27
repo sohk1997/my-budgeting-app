@@ -41,3 +41,9 @@ stages:
 - stage: Deploy
   displayName: Deploy
   dependsOn: build
+  jobs:
+  - job: Deploy
+    displayName: deploy
+    steps:
+    - script:
+      - echo "Hello world"
