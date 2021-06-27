@@ -1,9 +1,9 @@
 
 variables:
-  GIT_COMMIT: $(Build.DefinitionVersion)
+  GIT_COMMIT: $(Build.SourceVersion)
   GIT_BRANCH: $(Build.SourceBranchName)
   dockerHub: sohk1997.azurecr.io
-  imageName: my-budgeting-app:$(GIT_COMMIT)
+  imageName: my-budgeting-app
 
 trigger:
 - master
