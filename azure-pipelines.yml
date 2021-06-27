@@ -54,11 +54,6 @@ stages:
         imageTag: $(Build.SourceVersion)
         dockerHub: sohk1997.azurecr.io
         imageName: my-budgeting-app
-    - task: Bash@3
-      displayName: Debug
-      inputs:
-        script: cat my-main.yml
-        targetType: inline
     - task: Kubernetes@1
       inputs:
         connectionType: 'Kubernetes Service Connection'
