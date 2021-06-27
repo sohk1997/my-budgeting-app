@@ -43,8 +43,11 @@ stages:
   jobs:
   - job: Deploy
     displayName: deploy
+    pool:
+      vmImage: ubuntu-16.04
     steps:
-    - bash: envsubst < main.yml > main.yml
+    - bash: envsubst < main.yml > my-main.yml
+    - bash: envsubst < main.yml > my-main.yml
     - task: Kubernetes@1
       inputs:
         connectionType: 'Kubernetes Service Connection'
