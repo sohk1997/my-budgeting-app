@@ -9,7 +9,7 @@ trigger:
 - master
 
 stages:
-  - stage: build
+- stage: build
   displayName: Build
   jobs:
   - job: Docker@2
@@ -35,6 +35,6 @@ stages:
       tags: |
         latest
         $(GIT_COMMIT)
-  - stage: Deploy
-    displayName: Deploy
-    dependsOn: build
+- stage: Deploy
+  displayName: Deploy
+  dependsOn: build
